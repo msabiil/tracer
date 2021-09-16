@@ -50,6 +50,7 @@ $routes->get('alumni/edit/(:any)', 'Alumni::edit/$1');
 $routes->put('alumni/(:any)', 'Alumni::update/$1');
 $routes->delete('alumni/(:segment)', 'Alumni::destroy/$1');
 
+$routes->post('send-action', 'blas::send_action');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
