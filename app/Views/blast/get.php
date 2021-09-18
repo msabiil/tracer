@@ -43,7 +43,7 @@
             ?>
             <div class="card-body">
 
-                <form action="<?= base_url('blast/send-action') ?>" method="POST">
+                <form id="formBlast" action="<?= site_url('blast/kirim_aksi') ?>" method="post" autocomplete="off">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Email address</label>
                         <input type="text" name="email" class="form-control" placeholder="name@example.com" required autofocus>
@@ -59,7 +59,7 @@
                         <textarea rows="20" name="content" cols="50" class="form-control" id="exampleFormControlTextarea1" style="height:100px" required></textarea>
 
                     </div>
-                    <button type="submit" class="btn btn-primary">broadcast</button>
+                    <button type="submit" id="broad" class="btn btn-primary">broadcast</button>
                 </form>
             </div>
         </div>
@@ -69,4 +69,15 @@
 
     </div>
 </section>
+<?= $this->endSection() ?>
+
+<?= $this->Section('script') ?>
+<script>
+    // $(document).ready(function(){
+    //     $('#broad').click(function(e){
+    //         e.preventDefault();
+    //         $('#formBlast').submit();
+    //     });
+    // });
+</script>
 <?= $this->endSection() ?>
