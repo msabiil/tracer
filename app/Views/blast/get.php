@@ -16,26 +16,50 @@
             <div class="card-header">
                 <h4>broadcast</h4>
             </div>
+            <?php
+            if (session()->getFlashData('success')) {
+            ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashData('success') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php
+            }
+            ?>
 
+            <?php
+            if (session()->getFlashData('failed')) {
+            ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashData('failed') ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php
+            }
+            ?>
             <div class="card-body">
 
-                <form action="" method="post">
+                <form id="formBlast" action="<?= site_url('blast/kirim_aksi') ?>" method="post" autocomplete="off">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Email address</label>
-                        <input type="text" class="form-control" placeholder="name@example.com" required autofocus>
+                        <input type="text" name="email" class="form-control" placeholder="name@example.com" required autofocus>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">subject</label>
-                        <input type="text" class="form-control" id="" placeholder="subjet here">
+                        <input type="text" name="subject" class="form-control" id="" placeholder="subjet here" required>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">text</label>
-                        <textarea rows="10" cols="50" class="form-control" id="exampleFormControlTextarea1"></textarea>
+                        <textarea rows="20" name="content" cols="50" class="form-control" id="exampleFormControlTextarea1" style="height:100px" required></textarea>
 
                     </div>
-                    <button type="submit" class="btn btn-primary">broadcast</button>
+                    <button type="submit" id="broad" class="btn btn-primary">broadcast</button>
                 </form>
             </div>
         </div>
@@ -45,4 +69,15 @@
 
     </div>
 </section>
+<?= $this->endSection() ?>
+
+<?= $this->Section('script') ?>
+<script>
+    // $(document).ready(function(){
+    //     $('#broad').click(function(e){
+    //         e.preventDefault();
+    //         $('#formBlast').submit();
+    //     });
+    // });
+</script>
 <?= $this->endSection() ?>
