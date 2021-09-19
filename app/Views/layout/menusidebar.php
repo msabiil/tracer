@@ -14,7 +14,7 @@
   <ul class="dropdown-menu">
     <li><a class="nav-link" href="<?= site_url('survei') ?>">Kuisioner</a></li>
     <?php if (session()->get('akses') == 1) { ?>
-      <li><a class="nav-link" href="layout-transparent.html">Hasil Survey</a></li>
+      <li><a class="nav-link" href="<?= site_url('hasilsurvei') ?>">Hasil Survey</a></li>
     <?php } ?>
 
   </ul>

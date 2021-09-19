@@ -41,7 +41,7 @@ $routes->get('create-db', function () {
 
 $routes->get('login', 'Auth::login');
 
-// $routes->addRedirect('/', 'login');
+$routes->addRedirect('/', 'home');
 
 $routes->get('alumni', 'Alumni::index');
 $routes->get('alumni/add', 'Alumni::create');
