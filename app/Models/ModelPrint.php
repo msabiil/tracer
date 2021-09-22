@@ -10,4 +10,9 @@ class ModelPrint extends Model
     {
         return $this->db->table('alumni')->get()->getResult();
     }
+
+    public function alldatakuisioner()
+    {
+        return $this->db->table('kuisioner')->get()->getResult();
+    }
 }

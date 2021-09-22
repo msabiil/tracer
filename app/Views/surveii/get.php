@@ -25,7 +25,7 @@
                         <label for="exampleInputPassword1">Bekerja ?</label>
                         <input type="text" class="form-control" name="example1">
                         <small id="" class="form-text text-muted">
-                            Full Time, Part Time, Wirausaha
+                            Full Time, Part Time, Wirausaha (jika belum bekerja berikan tanda -)
                         </small>
                     </div>
 

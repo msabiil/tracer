@@ -2,14 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\ModelAlumni; //work
-use App\Models\ModelPrint; // work
+use App\Models\ModelAlumni; //work buat nampilin data
+use App\Models\ModelPrint; // work buat nampilin data print
+
+//buat pdf
 use TCPDF; // work
 
 //export excel
 use App\Controllers\BaseController;
 use App\Models\ModelExport;
-use CodeIgniter\Model;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 

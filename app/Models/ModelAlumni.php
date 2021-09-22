@@ -10,6 +10,11 @@ class ModelAlumni extends Model
     {
         return $this->db->table('alumni')->get()->getResult();
     }
+
+    public function alldatakusionerr()
+    {
+        return $this->db->table('kuisioner')->get()->getResult();
+    }
 }
 
 //menampilkan data alumni di table
