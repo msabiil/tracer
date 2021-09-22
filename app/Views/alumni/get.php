@@ -46,7 +46,7 @@
       </div>
 
       <!-- //search -->
-      <div class="row-9">
+      <!-- <div class="row-9">
         <div class="col-6">
           <form action="" method="post">
             <div class="input-group mb-3">
@@ -57,24 +57,41 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
 
-      <div class="row-2">
+      <div class="form-group row-2">
         <div class="col-md">
-          <a class="btn btn-primary" href="<?= site_url('alumni/exporthalaman') ?>" type="button">export excel</a>
+
+
+          <a class="btn btn-primary" href="<?= site_url('alumni/exportexcel') ?>" type="button">export excel</a>
           <a class="btn btn-primary" href="<?= base_url('alumni/printpdf') ?>" type="button">pdf</a>
           <a class="btn btn-primary" href="<?= site_url('alumni/print') ?>">Print</a>
-        </div>
 
-        <div class="container">
-          <div class="card-body ">
+
+          <!-- <?php
+                echo form_open_multipart('alumni/importexcel');
+                ?>
+          <div class="form-group">
+            <label></label>
+            <input type="file" name="fileexcel" class="form-control-file" accept=".xls, .xlsx">
           </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">submit</button>
+          </div>
+          <?php echo form_close() ?> -->
+
         </div>
       </div>
+      <br><br>
+
+
+
+
       <div class="card-body p-0">
         <div class="table-responsive">
           <table class="table table-striped table-md">
-            <tbody>
+            <tbody class="text-center">
               <tr>
                 <th>#</th>
                 <th>Nama</th>

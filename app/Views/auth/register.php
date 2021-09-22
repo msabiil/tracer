@@ -35,25 +35,25 @@
                             </div>
 
                             <div class="card-body">
-                                <?php
-                                //pesan validasi error
-                                $errors = session()->getFlashdata('errors');
-                                if (!empty($errors)) { ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <ul>
-                                            <?php foreach ($errors as $error) : ?>
-                                                <li><?= esc($error) ?></li>
-                                            <?php endforeach ?>
-                                        </ul>
+                                <?php if (session()->getFlashdata('success')) : ?>
+                                    <div class="alert alert-success alert-dismissible show fade">
+                                        <div class="alert-body">
+                                            <button class="close" data-dismiss="alert">x</button>
+                                            <b>success</b>
+                                            <?= session()->getFlashdata('success') ?>
+                                        </div>
                                     </div>
-                                <?php } ?>
-                                <?php
-                                if (session()->getFlashdata('pesan')) {
-                                    echo '<div class="alert alert-success"role="alert">';
-                                    echo session()->getFlashdata('pesan');
-                                    echo '</div>';
-                                }
-                                ?>
+                                <?php endif; ?>
+
+                                <?php if (session()->getFlashdata('error')) : ?>
+                                    <div class="alert alert-danger alert-dismissible show fade">
+                                        <div class="alert-body">
+                                            <button class="close" data-dismiss="alert">x</button>
+                                            <b>error</b>
+                                            <?= session()->getFlashdata('error') ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
 
                                 <form action="<?= site_url('auth/saveregister') ?>" method="POST">
                                     <?= csrf_field() ?>
@@ -195,6 +195,7 @@
             });
         }, 3000);
     </script>
+
     <!-- Page Specific JS File -->
     <script src="<?= base_url() ?>/template/assets/js/page/auth-register.js"></script>
 </body>

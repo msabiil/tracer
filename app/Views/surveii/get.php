@@ -20,25 +20,31 @@
                 <br>
                 <form>
                     <h5>Kegiatan saat ini</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="example1" id="exampleRadios1" value="option1" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                            Bekerja ( Full Time, Part Time, Wirausaha)
-                        </label>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Bekerja ?</label>
+                        <input type="text" class="form-control" name="example1">
+                        <small id="" class="form-text text-muted">
+                            Full Time, Part Time, Wirausaha
+                        </small>
                     </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="example2" id="exampleRadios2" value="option2" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Belum Bekerja / Tidak Bekerja
-                        </label>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Belum Bekerja / Tidak Bekerja ?</label>
+                        <input type="text" name="example2" class="form-control">
+                        <small id="" class="form-text text-muted">
+                            Bekerja / Tidak Bekerja
+                        </small>
                     </div>
-                    <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="example3" id="exampleRadios3" value="option3" checked>
-                        <label class="form-check-label" for="exampleRadios3">
-                            Melanjutkan Study
-                        </label>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Melanjutkan Study ?</label>
+                        <input type="text" name="example3" class="form-control">
+                        <small id="" class="form-text text-muted">
+                            Ya atau Tidak
+                        </small>
                     </div>
+
 
                     <br>
                     <br>
@@ -60,7 +66,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Posisi / Jabatan anda pada pekerjaan saat ini</label>
-                        <input type="email" name="example6" class="form-control">
+                        <input type="text" name="example6" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -85,14 +91,14 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Tingkat perusahaan tempat anda bekerja saat ini</label>
-                        <input type="text" class="form-control" name="example9" placeholder="contoh : lokal berwirausaha berizin">
+                        <input type="text" class="form-control" name="example10" placeholder="contoh : lokal berwirausaha berizin">
                         <small id="" class="form-text text-muted">
                             lokal berwirausaha (berizin / tidak berizin) / nasional (berizin) / internasional
                         </small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Seberapa erat hubungan antara bidang studi dengan pekerjaan anda</label>
-                        <input type="text" name="example10" class="form-control">
+                        <input type="text" name="example11" class="form-control">
                         <small id="" class="form-text text-muted">tidak erat / sangat erat</small>
                     </div>
 

@@ -62,10 +62,10 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="<?= site_url() ?>">Uhamka Tracer </a>
+            <a href="<?= site_url('home') ?>">Uhamka Tracer </a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?= site_url() ?>">TC</a>
+            <a href="<?= site_url('home') ?>">TC</a>
           </div>
           <ul class="sidebar-menu">
             <?= $this->include('layout/menusidebar') ?>

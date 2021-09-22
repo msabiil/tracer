@@ -25,32 +25,29 @@ class Auth extends BaseController
         // }
         // return view('auth/login');
 
-        $data = array(
-            'title' => 'Login',
-        );
-        return view('auth/login', $data);
+        // $data = array(
+        //     'title' => 'Login',
+        // );
+        return view('auth/login');
     }
 
 
     public function register() // fungsi register alumni
     {
-        $data = array(
-            'title' => 'Register',
-        );
         return view('auth/register');
     }
 
     public function logout()
     {
 
-        // session()->remove('log');
-        // session()->remove('nama_lengkap');
-        // session()->remove('username');
-        // session()->remove('akses');
-        // session()->setFlashData('pesan', 'logout sukses...!');
+        session()->remove('log');
+        session()->remove('nama_lengkap');
+        session()->remove('username');
+        session()->remove('akses');
+        session()->setFlashData('pesan', 'logout sukses...!');
         session()->remove('id_alumni');
-        return redirect()->to(site_url('login'));
         session()->destroy();
+        return redirect()->to(site_url('login'));
     }
 
 
@@ -67,7 +64,7 @@ class Auth extends BaseController
             session()->set('nama_lengkap', $user['nama_lengkap']);
             session()->set('username', $user['username']);
             session()->set('akses', $user['akses']);
-            return redirect()->to(base_url('home'));
+            return redirect()->to(site_url('home'));
         } else {
             return redirect()->back()->with('error', ' username / password tidak sesuai');
         }
@@ -163,7 +160,7 @@ class Auth extends BaseController
             );
             $this->ModelAuth->saveregister($data);
 
-            session()->setFlashdata('pesan', 'register berhasil dilakukan,silahkan login');
+            session()->setFlashdata('success', 'register berhasil dilakukan,silahkan login');
             return redirect()->to(base_url('Auth/login'));
         } else {
             //jika tidak valid

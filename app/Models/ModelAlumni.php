@@ -11,3 +11,5 @@ class ModelAlumni extends Model
         return $this->db->table('alumni')->get()->getResult();
     }
 }
+
+//menampilkan data alumni di table

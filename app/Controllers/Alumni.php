@@ -2,13 +2,22 @@
 
 namespace App\Controllers;
 
-use App\Models\ModelAlumni;
-use App\Models\ModelPrint;
-
-use App\Models\ModelsAlumni;
-use App\Models\ModelSearch;
+use App\Models\ModelAlumni; //work
+use App\Models\ModelPrint; // work
 use TCPDF; // work
-use App\Models\ModelCount;
+
+//export excel
+use App\Controllers\BaseController;
+use App\Models\ModelExport;
+use CodeIgniter\Model;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+//import excel
+use PHPExcel;
+use PHPExcel_IOFactory;
+use App\Models\ModelImport;
+
 
 class Alumni extends BaseController
 {
@@ -20,6 +29,7 @@ class Alumni extends BaseController
 		$this->ModelPrint = new ModelPrint();
 
 
+
 		helper('form');
 	}
 
@@ -28,6 +38,7 @@ class Alumni extends BaseController
 		//cara 1 pake query builder
 		// $builder = $this->db->table('alumni');
 		// $query   = $builder->get()->get();
+
 
 		//cara 2 pake manual
 		$query = $this->db->query("SELECT * FROM alumni");
@@ -121,5 +132,47 @@ class Alumni extends BaseController
 
 		$this->response->setContentType('application/pdf');
 		$pdf->Output('data_alumni.pdf', 'I');
+	}
+
+	public function exportexcel()
+	{
+		$ModelExport = new ModelExport();
+		$alumni = $ModelExport->findAll();
+
+		$spreadsheet = new Spreadsheet();
+
+		$spreadsheet->setActiveSheetIndex(0)
+			->setCellValue('A1', 'nama lengkap')
+			->setCellValue('B1', 'tempat lahir')
+			->setCellValue('C1', 'tanggal lahir')
+			->setCellValue('D1', 'alamat')
+			->setCellValue('E1', 'no telpon')
+			->setCellValue('F1', 'email')
+			->setCellValue('G1', 'program studi')
+			->setCellValue('H1', 'kelulusan');
+
+		$column = 2;
+
+		foreach ($alumni as $data) {
+			$spreadsheet->setActiveSheetIndex(0)
+				->setCellValue('A' . $column, $data['nama_lengkap'])
+				->setCellValue('B' . $column, $data['tempat_lahir'])
+				->setCellValue('C' . $column, $data['tanggal_lahir'])
+				->setCellValue('D' . $column, $data['alamat'])
+				->setCellValue('E' . $column, $data['no_telpon'])
+				->setCellValue('F' . $column, $data['email'])
+				->setCellValue('G' . $column, $data['program_studi'])
+				->setCellValue('H' . $column, $data['kelulusan']);
+
+			$column++;
+		}
+		$writer = new Xlsx($spreadsheet);
+		$filename = date('Y-m-d-His') . 'data-user';
+
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment;filename=' . $filename . '.xlsx');
+		header('Cache-Control: max-age=0');
+
+		$writer->save('php://output');
 	}
 }

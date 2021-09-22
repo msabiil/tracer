@@ -14,6 +14,8 @@
 
     <div class="row-2" class="">
         <div class="col-md">
+
+            </style>
             <table class="table table-bordered">
                 <thead>
                     <tr>

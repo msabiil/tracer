@@ -1,6 +1,6 @@
 <?php if (session()->get('akses') == 1) { ?>
   <li class="menu-header">Main Menu</li>
-  <li><a class="nav-link" href="<?= site_url('') ?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+  <li><a class="nav-link" href="<?= site_url('home') ?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
   <li><a class="nav-link" href="<?= site_url('alumni') ?>"><i class="fas fa-user-graduate"></i> <span>Alumni</span></a></li>
   <li><a class="nav-link" href="<?= site_url('blast') ?>"><i class="fas fa-broadcast-tower"></i> <span>Blast</span></a></li>
 

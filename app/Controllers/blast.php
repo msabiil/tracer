@@ -2,58 +2,64 @@
 
 namespace App\Controllers;
 
+//php mailer
+
+use App\Models\ModelHasilSurvei;
+use App\Models\UserModel;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Blast extends BaseController
 {
 
 	public function __construct()
 	{
+		helper(['form']);
 		helper('form');
+		$this->email = \Config\Services::email();
 	}
 
 	public function index()
 	{
+
 		return view('blast/get');
 	}
 
-	private function sendEmail($to, $title, $message, $attachment = null)
+
+	//mail blast
+	public function send()
 	{
+		$to                 = $this->request->getPost('to');
+		$subject            = $this->request->getPost('subject');
+		$message            = $this->request->getPost('message');
 
-		$this->email = \Config\Services::email();
-		$this->email->setFrom('tracer@gmail.com', 'tracer');
-		$this->email->setTo($to);
+		$mail = new PHPMailer(true);
 
-		if ($attachment != null) {
-			$this->email->attach($attachment);
+		try {
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->isSMTP();
+			$mail->Host       = 'smtp.gmail.com';
+			$mail->SMTPAuth   = true;
+			$mail->Username   = 'tracerftuhamka@gmail.com'; // silahkan ganti dengan alamat email Anda
+			$mail->Password   = 'teknikgood123'; // silahkan ganti dengan password email Anda
+			$mail->SMTPSecure = 'ssl';
+			$mail->Port       = 465;
+
+			$mail->setFrom('tracerftuhamka@gmail.com', 'ftuhamka'); // silahkan ganti dengan alamat email Anda
+			$mail->addAddress($to);
+			$mail->addReplyTo('tracerftuhamka@gmail.com', 'ftuhamka'); // silahkan ganti dengan alamat email Anda
+			// Content
+			$mail->isHTML(true);
+			$mail->Subject = $subject;
+			$mail->Body    = $message;
+
+			$mail->send();
+			session()->setFlashdata('success', 'Send Email successfully');
+			return redirect()->to('/blast');
+		} catch (Exception $e) {
+			session()->setFlashdata('error', "Send Email failed. Error: " . $mail->ErrorInfo);
+			return redirect()->to('/blast');
 		}
-
-		$this->email->setSubject($title);
-		$this->email->setMessage($message);
-
-		if (!$this->email->send()) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	public function kirim_aksi()
-	{
-		// $email = $this->request->getPost('emai');
-		// $subject = $this->request->getPost('subject');
-		// $content = $this->request->getPost('content');
-	
-		if (true) {
-			$hasil = $this->sendEmail('fauzi190198@gmail.com','test','cumantest');
-			session()->setFlashData('success', 'Berhasil Mengirimkan Blast Email');
-			if ($hasil){
-				echo "berhasil";
-			} else {
-				$data = $this->email->printDebugger(['headers']);
-            	print_r($data);
-			}
-		} else {
-			session()->setFlashData('failed', 'Gagal Mengirimkan Blast Email ');
-		}
-		// return redirect(base_url('blast'));
 	}
 }

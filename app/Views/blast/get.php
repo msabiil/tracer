@@ -43,26 +43,71 @@
             ?>
             <div class="card-body">
 
-                <form id="formBlast" action="<?= site_url('blast/kirim_aksi') ?>" method="post" autocomplete="off">
+
+                <?php
+                echo form_open('blast/send'); ?>
+
+                <div class="form-group">
+                    <?php
+                    form_label('To');
+                    $to = [
+                        'type'  => 'email',
+                        'name'  => 'to',
+                        'class' => 'form-control',
+                        'placeholder' => 'email@example.com'
+                    ];
+                    echo form_input($to);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <?php
+                    form_label('Subject');
+                    $subject = [
+                        'type'  => 'text',
+                        'name'  => 'subject',
+                        'class' => 'form-control',
+                        'placeholder' => 'Subject'
+                    ];
+                    echo form_input($subject);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <?php
+                    form_label('Message');
+                    $message = [
+                        'type'  => 'text',
+                        'name'  => 'message',
+                        'class' => 'form-control',
+                        'placeholder' => 'Message'
+                    ];
+                    echo form_textarea($message);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">kirim</button>
+                </div>
+                </form>
+            </div>
+            <!-- <form name="form1" action="" method="post" autocomplete="off">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Email address</label>
-                        <input type="text" name="email" class="form-control" placeholder="name@example.com" required autofocus>
+                        <input type="text" name="email_list" class="form-control" placeholder="name@example.com" required autofocus>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">subject</label>
-                        <input type="text" name="subject" class="form-control" id="" placeholder="subjet here" required>
+                        <input type="text" name="mail_subject" class="form-control" id="" placeholder="subjet here" required>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">text</label>
-                        <textarea rows="20" name="content" cols="50" class="form-control" id="exampleFormControlTextarea1" style="height:100px" required></textarea>
+                        <textarea rows="20" name="mail_body " cols="50" class="form-control" id="exampleFormControlTextarea1" style="height:100px" required></textarea>
 
                     </div>
-                    <button type="submit" id="broad" class="btn btn-primary">broadcast</button>
-                </form>
-            </div>
+                    <button type="submit"  id="broad" class="btn btn-primary">broadcast</button>
+                </form> -->
         </div>
+    </div>
     </div>
 
 
@@ -73,11 +118,10 @@
 
 <?= $this->Section('script') ?>
 <script>
-    // $(document).ready(function(){
-    //     $('#broad').click(function(e){
-    //         e.preventDefault();
-    //         $('#formBlast').submit();
-    //     });
-    // });
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 3000);
 </script>
 <?= $this->endSection() ?>
